@@ -18,7 +18,7 @@ public class KafkaTestJavaApplication {
 	@Autowired
 	private StartMessage startMessage;
 
-	@Scheduled(cron = "0 7 7 1/1 * ?")
+	@Scheduled(cron = "0 38 16 1/1 * ?")
 	private void send(){
 		startMessage.sendMessage();
 	}

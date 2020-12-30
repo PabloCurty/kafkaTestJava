@@ -16,4 +16,5 @@ public class StartMessage {
         topic = "test_java";
         kafkaTemplates.sendMessage(topic, msg);
     }
+
 }

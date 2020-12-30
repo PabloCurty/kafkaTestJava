@@ -1,8 +1,10 @@
 package com.curty.kafkaTestJava.publishingMessages;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
@@ -27,5 +29,10 @@ public class KafkaTemplates {
                         "] with offset=[" + result.getRecordMetadata().offset() + "]");
             }
         });
+    }
+
+    @KafkaListener(topics = "test_java", groupId = "group1")
+    public void receiveMessage(@Payload String message){
+        System.out.println("Received Message in topic test_java with group group1: " + message);
     }
 }
